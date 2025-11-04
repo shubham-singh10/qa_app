@@ -8,29 +8,20 @@ import questionRoutes from "./routes/questions.ts"
 import answerRoutes from "./routes/answers.ts"
 import insightRoutes from "./routes/insights.ts"
 
+const corsOptions = {
+    origin: [
+        "http://localhost:5173",
+        "https://qa-app-xi.vercel.app"
+    ],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+}
 const app = express()
-
-const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || "https://qa-app-s69w.vercel.app";
-console.log("Allowed FRONTEND_ORIGIN: ", FRONTEND_ORIGIN);
-app.use(express.json());
-
-const corsOptions: cors.CorsOptions = {
-    origin: FRONTEND_ORIGIN,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "Accept", "X-Requested-With"],
-    exposedHeaders: ["Content-Range", "X-Total-Count"],
-    credentials: false
-};
-app.use(cors(corsOptions));
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", FRONTEND_ORIGIN);
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
-    if (req.method === "OPTIONS") {
-        return res.sendStatus(200);
-    }
-    next();
-});
+app.use(cors(corsOptions))
+app.use(express.json())
 
 app.use("/api/auth", authRoutes)
 app.use("/api/question", questionRoutes)
