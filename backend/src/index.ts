@@ -23,6 +23,10 @@ const app = express()
 app.use(cors(corsOptions))
 app.use(express.json())
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 app.use("/api/auth", authRoutes)
 app.use("/api/question", questionRoutes)
 app.use("/api/answer", answerRoutes)
