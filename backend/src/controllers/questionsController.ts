@@ -1,6 +1,6 @@
 import type { Response, Request } from "express";
 import type { AuthRequest } from "../utils/types.ts";
-import Question from "../models/Question";
+import Question from "../models/Question.ts";
 
 // API to create a questions
 export const createQuestion = async (req: AuthRequest, res: Response) => {

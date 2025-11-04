@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import dotenv from "dotenv"
 import jwt from "jsonwebtoken"
-import User from "../models/User";
+import User from "../models/User.ts";
 import mongoose from "mongoose";
 dotenv.config()
 

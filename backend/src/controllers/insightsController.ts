@@ -1,6 +1,6 @@
 import type { Response, Request } from "express";
 import type { AuthRequest } from "../utils/types.ts";
-import Insight from "../models/Insight";
+import Insight from "../models/Insight.ts";
 
 //API to craete a Insights
 export const createInsight = async (req: AuthRequest, res: Response) => {
