@@ -1,24 +1,23 @@
+// src/config/db.ts
 import mongoose from "mongoose";
 
+const MONGO_URI = process.env.MONGO_URI || "";
+
+declare global {
+  // eslint-disable-next-line no-var
+  var _mongoClientPromise: Promise<typeof mongoose> | undefined;
+}
+
 export async function connectDB() {
-    const localUri = process.env.MONGO_URI_LOCAL;
-    const cloudUri = process.env.MONGO_URI_CLOUD;
+  if (!MONGO_URI) throw new Error("MONGO_URI not set");
+  if (mongoose.connection.readyState === 1) return mongoose;
 
-    if (!localUri && !cloudUri) {
-        console.error("No MongoDB URI defined in .env file!");
-        process.exit(1);
-    }
+  if (global._mongoClientPromise) {
+    await global._mongoClientPromise;
+    return mongoose;
+  }
 
-    try {
-        if (localUri) {
-            await mongoose.connect(localUri);
-            console.log(`MongoDB connected: local`);
-        } else if (cloudUri) {
-            await mongoose.connect(cloudUri);
-            console.log(`MongoDB connected: cloud`);
-        }
-    } catch (error) {
-        console.error("Failed to connect to MongoDB:", error);
-        process.exit(1);
-    }
+  global._mongoClientPromise = mongoose.connect(MONGO_URI).then(() => mongoose);
+  await global._mongoClientPromise;
+  return mongoose;
 }
