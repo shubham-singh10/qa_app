@@ -2,11 +2,11 @@ import express from 'express'
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
-import { connectDB } from "./config/db.ts";
-import authRoutes from "./routes/auth.ts"
-import questionRoutes from "./routes/questions.ts"
-import answerRoutes from "./routes/answers.ts"
-import insightRoutes from "./routes/insights.ts"
+import { connectDB } from "./config/db";
+import authRoutes from "./routes/auth"
+import questionRoutes from "./routes/questions"
+import answerRoutes from "./routes/answers"
+import insightRoutes from "./routes/insights"
 
 const corsOptions = {
     origin: [

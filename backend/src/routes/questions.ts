@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { createQuestion, getQuestion, getQuestionbyId } from "../controllers/questionsController.ts";
-import { protect } from "../middleware/authMiddleware.ts";
+import { createQuestion, getQuestion, getQuestionbyId } from "../controllers/questionsController";
+import { protect } from "../middleware/authMiddleware";
 
 const router = Router();
 router.post("/", protect, createQuestion);

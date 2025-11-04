@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { createInsight, getInsights } from "../controllers/insightsController.ts";
-import { protect } from "../middleware/authMiddleware.ts";
-import { managerOnly } from "../middleware/roleMiddleware.ts";
+import { createInsight, getInsights } from "../controllers/insightsController";
+import { protect } from "../middleware/authMiddleware";
+import { managerOnly } from "../middleware/roleMiddleware";
 
 const router = Router();
 router.post("/", protect, managerOnly, createInsight);
