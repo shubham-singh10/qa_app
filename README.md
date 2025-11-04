@@ -109,7 +109,7 @@ my-qa-app/
 ### 🌐 Live Demo
 
 - Frontend (React): https://qa-app-s69w.vercel.app
-- Backend (API): https://qa-app-xi.vercel.app
+- Backend (API): https://qa-backend-flax.vercel.app
 
 ### 👨‍💻 Author
 
