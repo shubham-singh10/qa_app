@@ -244,7 +244,7 @@ export default function Register() {
                                     />
                                     <div className="flex flex-col items-center p-4 border-2 border-gray-300 rounded-lg cursor-pointer peer-checked:border-indigo-600 peer-checked:bg-indigo-50 transition-all hover:border-indigo-400">
                                         <User className="h-6 w-6 text-gray-600 peer-checked:text-indigo-600" />
-                                        <span className="mt-2 text-sm font-medium text-gray-700">User</span>
+                                        <span className="mt-2 text-sm font-medium text-gray-700">Member</span>
                                     </div>
                                 </label>
 
