@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { addAnswer, getAnswerByQuestion } from "../controllers/answersController.ts";
-import { protect } from "../middleware/authMiddleware.ts";
+import { addAnswer, getAnswerByQuestion } from "../controllers/answersController";
+import { protect } from "../middleware/authMiddleware";
 
 const router = Router();
 router.post("/", protect, addAnswer);

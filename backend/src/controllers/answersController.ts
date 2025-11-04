@@ -1,6 +1,6 @@
 import type { Response, Request } from "express";
 import type { AuthRequest } from "../utils/types.ts";
-import Answer from "../models/Answer.ts";
+import Answer from "../models/Answer";
 
 // API to create answer
 export const addAnswer = async (req: AuthRequest, res: Response) => {
